@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odoo 19 Quiz - Thành viên</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="login-screen" class="login-screen">
+    <div class="login-card">
+        <div class="login-logo">ODOO 19 <span>QUIZ</span></div>
+        <h1>Đăng nhập thành viên</h1>
+        <p>Nhập họ và tên để bắt đầu làm bài kiểm tra.</p>
+
+        <label for="member-name">Họ và tên</label>
+        <input
+            id="member-name"
+            type="text"
+            placeholder="Ví dụ: Bùi Thị Vấn"
+            autocomplete="name"
+        >
+
+        <button id="login-btn" onclick="loginMember()">Vào làm bài</button>
+
+        <div id="login-error" class="login-error"></div>
+    </div>
+</div>
+
+<div id="app" class="hidden">
+    <header class="topbar">
+        <div class="brand" onclick="showHome()">
+            ODOO 19 <span>QUIZ</span>
+        </div>
+
+        <div class="top-actions">
+            <button class="top-link" onclick="showHistory()">Bảng thành tích</button>
+            <div class="user-chip">
+                👤 <span id="current-user"></span>
+            </div>
+            <button class="logout-btn" onclick="logoutMember()">Đăng xuất</button>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section id="home-screen">
+            <div class="hero">
+                <p class="eyebrow">BỘ CÂU HỎI ÔN TẬP ODOO 19</p>
+                <h1>Chọn mảng kiểm tra</h1>
+                <p id="welcome-text"></p>
+
+                <div class="reward-note">
+                    🏆 Thành viên đạt <strong>trên 80%</strong> ở một mảng có đầy đủ đáp án
+                    sẽ nhận <strong>Chứng nhận thành tích</strong>.
+                </div>
+            </div>
+
+            <div id="category-list" class="category-grid"></div>
+        </section>
+
+        <section id="quiz-screen" class="hidden">
+
+            <div class="quiz-heading">
+                <button class="back-link" onclick="showHome()">← Danh sách mảng</button>
+                <div id="quiz-category" class="quiz-category"></div>
+            </div>
+
+            <div id="quiz-container"></div>
+
+            <div class="navigation">
+                <button id="prev-btn" onclick="previousQuestion()">← Câu trước</button>
+                <span id="question-number"></span>
+                <button id="next-btn" onclick="nextQuestion()">Câu tiếp →</button>
+            </div>
+
+            <div class="submit-area">
+                <button id="submit-btn" onclick="submitQuiz()">Nộp bài</button>
+            </div>
+
+            <div id="result-box" class="result-box"></div>
+        </section>
+
+        <section id="history-screen" class="hidden">
+            <div class="history-header">
+                <div>
+                    <button class="back-link" onclick="showHome()">← Danh sách mảng</button>
+                    <h2>Bảng thành tích</h2>
+                    <p>Chỉ lưu những kết quả đạt trên 80% và đủ điều kiện nhận chứng nhận.</p>
+                </div>
+                <button class="clear-btn" onclick="clearHistory()">Xóa lịch sử</button>
+            </div>
+
+            <div class="history-table-wrap">
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th>Thành viên</th>
+                            <th>Mảng</th>
+                            <th>Kết quả</th>
+                            <th>Điểm</th>
+                            <th>Thời gian</th>
+                            <th>Khen thưởng</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-body"></tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<div id="certificate-modal" class="modal hidden">
+    <div class="modal-backdrop" onclick="closeCertificate()"></div>
+
+    <div class="modal-card">
+        <button class="modal-close" onclick="closeCertificate()">×</button>
+
+        <div id="certificate" class="certificate">
+            <div class="cert-left-shape"></div>
+            <div class="cert-bottom-shape"></div>
+            <div class="cert-medal">
+                <div class="medal-circle"></div>
+                <div class="medal-ribbon"></div>
+            </div>
+
+            <div class="cert-content">
+                <h1>CHỨNG NHẬN</h1>
+                <h2>THÀNH TÍCH</h2>
+
+                <p class="cert-intro">Chứng nhận này được trao cho</p>
+
+                <div id="cert-name" class="cert-name"></div>
+
+                <div class="cert-line"></div>
+
+                <p class="cert-desc">đã hoàn thành xuất sắc bài kiểm tra</p>
+
+                <div id="cert-module" class="cert-module"></div>
+
+                <p class="cert-score-text">
+                    với kết quả <strong id="cert-score"></strong>
+                </p>
+
+                <div class="cert-footer">
+                    <div>
+                        <div id="cert-date" class="cert-date"></div>
+                        <div class="small-label">NGÀY</div>
+                    </div>
+
+                    <div class="psm-box">PSM</div>
+                </div>
+
+                <div id="cert-code" class="cert-code"></div>
+            </div>
+        </div>
+
+        <div class="modal-actions">
+            <button onclick="printCertificate()">In / Lưu PDF</button>
+            <button class="secondary" onclick="closeCertificate()">Đóng</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
