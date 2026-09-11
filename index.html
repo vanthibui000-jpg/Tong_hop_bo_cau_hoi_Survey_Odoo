@@ -8,26 +8,36 @@
 </head>
 <body>
     <main class="container">
-        <header>
-            <h1 class="main-title">[GDH] Khảo Sát Odoo<br>19 - Mảng 13</h1>
-            <div class="part-label">Phần Kiểm Tra: POS</div>
-        </header>
+        <section id="home-screen">
+            <header>
+                <h1 class="main-title">[GDH] Khảo Sát Odoo 19</h1>
+                <div class="part-label">Chọn mảng kiểm tra</div>
+            </header>
+            <h2 class="section-title">Danh sách mảng</h2>
+            <section id="category-list" class="category-list"></section>
+        </section>
 
-        <h2 class="section-title">Phần Kiểm Tra: POS</h2>
+        <section id="quiz-screen" class="hidden">
+            <header>
+                <h1 class="main-title">[GDH] Khảo Sát Odoo 19</h1>
+                <div id="quiz-category" class="part-label"></div>
+            </header>
 
-        <section id="quiz-container"></section>
+            <h2 class="section-title">Phần kiểm tra</h2>
+            <section id="quiz-container"></section>
 
-        <div class="navigation">
-            <button id="prev-btn" onclick="previousQuestion()">← Câu trước</button>
-            <span id="question-number"></span>
-            <button id="next-btn" onclick="nextQuestion()">Câu tiếp →</button>
-        </div>
+            <div class="navigation">
+                <button id="prev-btn" onclick="previousQuestion()">← Câu trước</button>
+                <span id="question-number"></span>
+                <button id="next-btn" onclick="nextQuestion()">Câu tiếp →</button>
+            </div>
 
-        <div class="submit-area">
-            <button id="submit-btn" onclick="submitQuiz()">Nộp bài</button>
-        </div>
+            <div class="submit-area">
+                <button id="submit-btn" onclick="submitQuiz()">Nộp bài</button>
+            </div>
 
-        <div id="result-box" class="result-box"></div>
+            <div id="result-box" class="result-box"></div>
+        </section>
     </main>
 
     <script src="script.js"></script>

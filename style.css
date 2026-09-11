@@ -15,6 +15,66 @@ body {
     margin: 25px auto 80px;
 }
 
+.hidden {
+    display: none;
+}
+
+.category-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 16px;
+}
+
+.category-card {
+    padding: 22px;
+    border: 1.5px solid #ff7a00;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .18s ease;
+}
+
+.category-card:hover {
+    background: #fff5ec;
+    transform: translateY(-2px);
+}
+
+.category-card.disabled {
+    border-color: #c8c8c8;
+    color: #777;
+    cursor: not-allowed;
+}
+
+.category-card.disabled:hover {
+    background: transparent;
+    transform: none;
+}
+
+.category-number,
+.badge {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.badge {
+    float: right;
+    color: #777;
+}
+
+.badge.ready {
+    color: #ff7a00;
+}
+
+.category-card h3 {
+    margin: 25px 0 8px;
+    font-size: 26px;
+}
+
+.category-card p {
+    margin: 0;
+    line-height: 1.4;
+}
+
 .main-title {
     margin: 20px 0 35px;
     font-size: 55px;
